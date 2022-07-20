@@ -4,18 +4,15 @@ on:
   workflow_call:
     inputs:
       username:
-        required: true
+        description: 'A username passed from the caller workflow'
+        default: 'john-doe'
+        required: false
         type: string
-    secrets:
-      token:
-        required: true
 
 jobs:
-  reusable_workflow_job:
+  print-username:
     runs-on: ubuntu-latest
-    environment: production
+
     steps:
-    - uses: actions/checkout@v3
-      with:
-          username: ${{ inputs.username }}
-          token: ${{ secrets.token }}
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
