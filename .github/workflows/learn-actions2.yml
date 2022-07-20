@@ -1,0 +1,11 @@
+name: Call a reusable workflow
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/workflow-2.yml
+
