@@ -1,7 +1,8 @@
 name: Share data between jobs
 
-on: [push]
-
+#  on: [push]
+on: 
+ workflow_dispatch:
 jobs:
   job_1:
     name: Add 3 and 7
