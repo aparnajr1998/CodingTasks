@@ -7,5 +7,5 @@ on:
 
 jobs:
   call-workflow:
-    uses: ./.github/workflows/workflow-2.yml
+    uses: ./.github/workflows/learn-actions-artifacts.yml
 
