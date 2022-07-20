@@ -11,11 +11,11 @@ on:
         required: true
 
 jobs:
-  example_job:
-    name: Pass input and secrets to my-action
+  reusable_workflow_job:
     runs-on: ubuntu-latest
+    environment: production
     steps:
-      - uses: ./.github/workflows/callerWorkflow.yml
+      - uses: ./.github/workflows/my-action
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.token }}
