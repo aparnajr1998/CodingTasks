@@ -1,18 +1,21 @@
-name: Reusable workflow example
+name: Reusable workflow
 
 on:
   workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
+    # Map the workflow outputs to job outputs
+    outputs:
+      firstword:
+        description: "The first output string"
+        value: ${{ jobs.example_job.outputs.output1 }}
 
 jobs:
-  print-username:
+  example_job:
+    name: Generate output
     runs-on: ubuntu-latest
-
+    # Map the job outputs to step outputs
+    outputs:
+      output1: ${{ steps.step1.outputs.firstword }}
     steps:
-      - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }}
+      - id: step1
+        run: echo "::set-output name=firstword::hello"
+ 
